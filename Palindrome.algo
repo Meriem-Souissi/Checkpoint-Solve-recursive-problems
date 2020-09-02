@@ -1,0 +1,30 @@
+FUNCTION Test_mot(VAR ch : string) : boolen 
+VAR
+     Test : boolen;
+BEGIN
+   IF (ch = '' OR length.ch = 1) THEN
+       Test := True ; 
+   ELSE_IF (ch[0] <> ch[length.ch-1]) THEN
+       Test := False ; 
+   ELSE
+       ch := ch.substring(1, length.ch -1);
+       Test := Test_mot(ch);
+   END_IF
+    RETURN Test ;
+END
+
+ALGORITHM Palindrome
+VAR
+    ch : string;
+    Mot : boolen;
+BEGIN
+    Read (ch);
+    Mot := Test_mot(ch);
+
+    IF (Mot = True) THEN
+        Write ("La chaine est palindrome")
+    ELSE
+        Write ("La chaine n'est  pas palindrome")
+    END_IF
+
+END
